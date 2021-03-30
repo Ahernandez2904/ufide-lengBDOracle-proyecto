@@ -18,7 +18,7 @@ public class Conexion {
             System.out.println("Conectando a DB...");
             connection = DriverManager.getConnection("jdbc:oracle:thin:@104.215.101.47:1521:orcldev","lsalazar","orcldev");
             Statement statement = connection.createStatement();
-            return statement;            
+            return statement;
         }catch (Exception e) {
             System.out.println("Error: " + e);
             return  null;
