@@ -1,9 +1,9 @@
-package com.mycompany.parqueo;
+package com.github.parqueo;
 
 public class Main {
     public static void main(String[] args) {
         Conexion conexion = new Conexion();
-        conexion.conn();
+        conexion.openConn();        
         conexion.closeConn();
     }
 }
