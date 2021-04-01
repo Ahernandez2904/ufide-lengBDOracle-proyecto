@@ -1,7 +1,3 @@
-com\mycompany\parqueo\Factura.class
-com\mycompany\parqueo\Producto.class
-com\mycompany\parqueo\Persona.class
-com\mycompany\parqueo\Cliente.class
-com\mycompany\parqueo\Main.class
-com\mycompany\parqueo\ListaProducto.class
-com\mycompany\parqueo\Conexion.class
+com\github\parqueo\Producto.class
+com\github\parqueo\Cliente.class
+com\github\parqueo\Persona.class

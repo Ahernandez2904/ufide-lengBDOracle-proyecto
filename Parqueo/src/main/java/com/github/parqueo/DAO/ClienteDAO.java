@@ -14,10 +14,11 @@ public class ClienteDAO extends Conexion {
     public ClienteDAO() {
     }
     
-    public Cliente insertCliente(Cliente cl){
+    /*public Cliente insertCliente(Cliente cl){
         if (cl.d) {
             
         }
         conn.createStatement("Execute ");
-    }
+        
+    }*/
 }
