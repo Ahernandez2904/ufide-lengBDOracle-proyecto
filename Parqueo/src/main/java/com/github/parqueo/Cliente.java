@@ -20,7 +20,7 @@ public class Cliente extends Persona {
         super.setNombre(nombre);
         super.setApellido(apellidos);
         super.setDireccion(direccion);
-        cl.insertCliente(this);
+        //cl.insertCliente(this);
         return codClinente;
     }
 }

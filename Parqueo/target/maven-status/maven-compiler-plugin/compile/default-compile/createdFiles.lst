@@ -1,3 +1,8 @@
-com\github\parqueo\Producto.class
 com\github\parqueo\Cliente.class
+com\github\parqueo\Conexion.class
+com\github\parqueo\ListaProducto.class
 com\github\parqueo\Persona.class
+com\github\parqueo\Producto.class
+com\github\parqueo\DAO\ClienteDAO.class
+com\github\parqueo\Main.class
+com\github\parqueo\Factura.class
