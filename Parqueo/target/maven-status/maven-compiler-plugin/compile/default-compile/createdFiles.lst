@@ -34,6 +34,7 @@ com\mycompany\parqueo\DAO\ClienteDAO.class
 com\mycompany\parqueo\JF_NuevaFactura.class
 com\mycompany\parqueo\JF_NuevoVehiculo$5.class
 com\mycompany\parqueo\Conexion.class
+com\mycompany\parqueo\DAO\DAO.class
 com\mycompany\parqueo\JF_BuscarParqueo.class
 com\mycompany\parqueo\JF_SeleccionarParqueo$2.class
 com\mycompany\parqueo\JF_NuevoVehiculo$7.class
