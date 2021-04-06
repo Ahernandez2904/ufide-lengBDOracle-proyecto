@@ -1,4 +1,4 @@
-package com.mycompany.parqueo;
+package com.github.parqueo;
 
 public class Persona {
     private String nombre;

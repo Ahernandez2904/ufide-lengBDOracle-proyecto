@@ -1,6 +1,6 @@
-package com.mycompany.parqueo;
+package com.github.parqueo;
 
-import com.mycompany.parqueo.DAO.ClienteDAO;
+import com.github.parqueo.DAO.ClienteDAO;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

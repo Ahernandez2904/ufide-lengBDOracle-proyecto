@@ -1,4 +1,4 @@
-package com.mycompany.parqueo;
+package com.github.parqueo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
