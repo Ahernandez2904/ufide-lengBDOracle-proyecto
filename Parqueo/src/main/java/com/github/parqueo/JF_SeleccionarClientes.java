@@ -34,7 +34,7 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("SELECCION DE CLIENTE");
+        jLabel1.setText("SELECCIÓN DE CLIENTE");
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("CREAR NUEVO ");

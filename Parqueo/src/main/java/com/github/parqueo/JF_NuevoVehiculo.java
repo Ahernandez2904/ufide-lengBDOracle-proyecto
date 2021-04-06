@@ -63,7 +63,7 @@ public class JF_NuevoVehiculo extends javax.swing.JFrame {
         jLabel2.setText("Numero de placa");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel3.setText("Tipo de vehiculo");
+        jLabel3.setText("Tipo de vehículo");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel4.setText("Marca");
@@ -141,7 +141,7 @@ public class JF_NuevoVehiculo extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addComponent(jButton1)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

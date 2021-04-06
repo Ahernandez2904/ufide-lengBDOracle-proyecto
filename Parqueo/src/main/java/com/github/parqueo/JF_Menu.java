@@ -36,7 +36,7 @@ public class JF_Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("SELECCIONE LA ACCION A REALIZAR");
+        jLabel1.setText("SELECCIONE LA ACCIÓN A REALIZAR");
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("BUSCAR PARQUEO");

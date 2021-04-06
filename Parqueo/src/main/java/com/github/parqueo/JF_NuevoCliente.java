@@ -50,7 +50,7 @@ public class JF_NuevoCliente extends javax.swing.JFrame {
         jLabel3.setText("APELLIDO 1");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("DETALLE DIRECCION");
+        jLabel4.setText("DETALLE DIRECCIÓN");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("APELLIDO 2");

@@ -58,7 +58,7 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         jLabel1.setText("INFORMACION DE TICKET");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel2.setText("1--FECHA DE CREACION");
+        jLabel2.setText("1--FECHA DE CREACIÓN");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("2--FECHA DE ENTRADA");
@@ -73,7 +73,7 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         jLabel6.setText("4--FECHA DE SALIDA");
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setText("6--VEHICULO");
+        jLabel7.setText("6--VEHÍCULO");
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel8.setText("8--ESPACIO");
