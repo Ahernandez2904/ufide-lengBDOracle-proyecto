@@ -1,7 +1,7 @@
-package com.github.parqueo.DAO;
+package com.mycompany.parqueo.DAO;
 
-import com.github.parqueo.Cliente;
-import com.github.parqueo.Conexion;
+import com.mycompany.parqueo.Cliente;
+import com.mycompany.parqueo.Conexion;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Types;

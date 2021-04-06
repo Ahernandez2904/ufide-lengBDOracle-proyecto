@@ -1,6 +1,6 @@
-package com.github.parqueo;
+package com.mycompany.parqueo;
 
-import com.github.parqueo.DAO.ClienteDAO;
+import com.mycompany.parqueo.DAO.ClienteDAO;
 
 public class Cliente extends Persona {
 
