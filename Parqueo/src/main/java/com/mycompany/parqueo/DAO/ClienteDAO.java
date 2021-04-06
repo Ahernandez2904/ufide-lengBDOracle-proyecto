@@ -1,8 +1,8 @@
 
-package com.github.parqueo.DAO;
+package com.mycompany.parqueo.DAO;
 
-import com.github.parqueo.Cliente;
-import com.github.parqueo.Conexion;
+import com.mycompany.parqueo.Cliente;
+import com.mycompany.parqueo.Conexion;
 
 /**
  * LastUpdate: 01/04/21

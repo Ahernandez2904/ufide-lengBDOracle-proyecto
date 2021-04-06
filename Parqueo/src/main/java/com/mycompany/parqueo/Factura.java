@@ -1,4 +1,4 @@
-package com.github.parqueo;
+package com.mycompany.parqueo;
 
 public class Factura {
     private int codFactura;
