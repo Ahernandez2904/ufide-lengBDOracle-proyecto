@@ -31,42 +31,7 @@ public class Conexion {
         }
     }
 
-    public void closeConn() {
-        try {
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("Error al tratar de cerrar la conexion: " + HOSTNAME
-                    + "\nError: " + e + "\n");
-        }
-
-    }
-    
-    public Statement pStm (String stm, String[] parameters){
-        try{
-            conn.prepareStatement(stm);
-            return this.stm;
-        }catch(SQLException se){
-            return this.stm;
-        }       
+    public Connection getConn() {
+        return conn;
     }
 }
-
-/*
-    public LinkedList<String> query(String from){
-        try {
-            Statement st = conn();
-            ResultSet resultSet = st.executeQuery(from);
-            
-            LinkedList<String> result = new LinkedList();
-            while (resultSet.next()){
-                for (int i = 1; i < resultSet.getMetaData().getColumnCount();i++){
-                    result.add(resultSet.getString(i));
-                }
-            }
-            return result;
-        }catch(Exception e){
-            return  null;
-        }
-    }
- */
-
