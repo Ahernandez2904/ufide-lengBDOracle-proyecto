@@ -2,6 +2,7 @@ package com.mycompany.parqueo;
 
 import com.mycompany.parqueo.DAO.ParqueoDAO;
 import java.sql.SQLException;
+import java.util.List;
 
 public class Parqueo {
     private ParqueoDAO p = new ParqueoDAO();
@@ -42,7 +43,8 @@ public class Parqueo {
         this.estado_Id = estado_Id;
     }
     
-    public void seleccionarTodos () {
-        
+    public List<Parqueo> seleccionarTodos () throws SQLException {
+        System.out.println("Hola");
+        return p.usp_sel_totalParqueo();
     }
 }

@@ -5,6 +5,12 @@
  */
 package com.mycompany.parqueo;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ale
@@ -18,6 +24,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Parqueo parqueo;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +45,11 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         jLabel1.setText("Seleccionar parqueo");
 
         cmbParqueo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbParqueo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbParqueoActionPerformed(evt);
+            }
+        });
 
         btnSeleccionar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSeleccionar.setText("Seleccionar");
@@ -77,8 +89,16 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        
+        try {
+            actualizarCmbParqueo();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void cmbParqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParqueoActionPerformed
+
+    }//GEN-LAST:event_cmbParqueoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +134,16 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
                 new JF_SeleccionarParqueo().setVisible(true);
             }
         });
+    }
+    
+    public void actualizarCmbParqueo() throws SQLException {
+        final List<String> p = new ArrayList<String>();
+        List<Parqueo> parqueos = new ArrayList<Parqueo>();
+        parqueos = parqueo.seleccionarTodos();
+        /*for (int i=0; i<parqueos.size(); i++){
+            System.out.println("Element "+i+parqueos.get(i));
+        }*/
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
