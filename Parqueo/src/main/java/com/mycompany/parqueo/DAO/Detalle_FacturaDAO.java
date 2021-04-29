@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import javax.swing.JOptionPane;
 
-public class Detalle_FacturaDAO {
+public class Detalle_FacturaDAO extends Conexion {
     private Detalle_Factura detalle_Factura;
     private Conexion conn;
     
