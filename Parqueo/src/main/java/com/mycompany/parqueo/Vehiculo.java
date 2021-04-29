@@ -4,13 +4,13 @@ import com.mycompany.parqueo.DAO.VehiculoDAO;
 import java.sql.SQLException;
 
 public class Vehiculo {
+    private VehiculoDAO v = new VehiculoDAO();
     private int vehiculo_Id; 
     private String placa; 
     private int tipo_Vehiculo_Id; 
     private String marca; 
     private int modelo; 
     private String color_Hex;
-    private VehiculoDAO v = new VehiculoDAO();
 
     public int getVehiculo_Id() {
         return vehiculo_Id;

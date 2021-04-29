@@ -77,7 +77,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     /**

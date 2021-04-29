@@ -4,11 +4,12 @@ import com.mycompany.parqueo.DAO.ClienteDAO;
 import java.sql.SQLException;
 
 public class Cliente extends Persona {
-    private int codCliente;
     private ClienteDAO cl = new ClienteDAO();
+    private int codCliente;
     private int estado_Cliente;
     private int detalle_Dir_Id;
     private String detalle_Dir;
+    
     public Cliente() { }
 
     public int getCodCliente() {

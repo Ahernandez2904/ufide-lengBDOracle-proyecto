@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.parqueo.DAO;
 
 import com.mycompany.parqueo.Conexion;
@@ -12,10 +7,6 @@ import java.sql.SQLException;
 import java.sql.Types;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Ale
- */
 public class VehiculoDAO extends Conexion {
 
     private Vehiculo vehiculo;
@@ -25,7 +16,7 @@ public class VehiculoDAO extends Conexion {
     
     public Vehiculo usp_insVehiculo(Vehiculo v) throws SQLException {
         this.vehiculo = v;
-        String sqlString = "{call usp_insCliente (?,?,?,?,?,?)}";
+        String sqlString = "{call usp_insVehiculo (?,?,?,?,?)}";
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
