@@ -112,7 +112,7 @@ public class JF_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new JF_BuscarParqueo().setVisible(true);
+        new JF_SeleccionarParqueo().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
