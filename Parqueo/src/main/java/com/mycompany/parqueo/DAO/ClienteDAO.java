@@ -18,8 +18,7 @@ public class ClienteDAO extends Conexion {
     private Cliente cliente;
     private Conexion conn;
 
-    public ClienteDAO() {
-    }
+    public ClienteDAO() { }
 
     public Cliente usp_insCliente(Cliente cl) throws SQLException {
         this.cliente = cl;
@@ -31,8 +30,8 @@ public class ClienteDAO extends Conexion {
             cstm.setString(2, cliente.getPrimer_Apellido());
             cstm.setString(3, cliente.getSegundo_Apellido());
             cstm.setString(4, cliente.getDni());
-            //detalle direccion cstm.setString(5, cliente.getDireccion());
-            //estadoclientecstm.setInt(6, cliente.getDistrito());
+            cstm.setString(5, cliente.getDetalle_Direccion());
+            estadoclientecstm.setInt(6, cliente.getDistrito());
             cstm.registerOutParameter("cliente_id", Types.INTEGER);
             cstm.execute();
             cliente.setCodCliente(cstm.getInt("cliente_id"));
