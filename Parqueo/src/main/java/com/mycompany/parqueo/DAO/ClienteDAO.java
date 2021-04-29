@@ -30,8 +30,8 @@ public class ClienteDAO extends Conexion {
             cstm.setString(2, cliente.getPrimer_Apellido());
             cstm.setString(3, cliente.getSegundo_Apellido());
             cstm.setString(4, cliente.getDni());
-            cstm.setString(5, cliente.getDetalle_Direccion());
-            estadoclientecstm.setInt(6, cliente.getDistrito());
+            cstm.setString(5, cliente.getDetalle_Dir());
+            cstm.setInt(6, cliente.getEstado_Cliente());
             cstm.registerOutParameter("cliente_id", Types.INTEGER);
             cstm.execute();
             cliente.setCodCliente(cstm.getInt("cliente_id"));
