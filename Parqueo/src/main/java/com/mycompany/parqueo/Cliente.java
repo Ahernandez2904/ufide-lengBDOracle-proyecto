@@ -43,7 +43,7 @@ public class Cliente extends Persona {
         this.detalle_Dir = detalle_Dir;
     }
     
-    public int insertar(String nombre, String primer_Apellido, String segundo_Apellido, String dni, String detalle_Dir, int estado_cliente) throws SQLException{
+    public int insertar(String nombre, String primer_Apellido, String segundo_Apellido, String dni, String detalle_Dir, int estado_cliente) throws SQLException {
         super.setNombre(nombre);
         super.setPrimer_Apellido(primer_Apellido);
         super.setSegundo_Apellido(segundo_Apellido);
@@ -51,7 +51,7 @@ public class Cliente extends Persona {
         this.setEstado_Cliente(estado_cliente);
         this.setDetalle_Dir(detalle_Dir);
         cl.usp_insCliente(this);
-        return codCliente;
+        return this.getCodCliente();
     }
     
 }

@@ -60,5 +60,14 @@ public class Vehiculo {
         this.color_Hex = color_Hex;
     }
     
-    
+    public int insertar(String placa, int tipo_Vehiculo_Id, String marca, int modelo, String color_Hex) throws SQLException {
+        this.setPlaca(placa);
+        this.setTipo_Vehiculo_Id(tipo_Vehiculo_Id);
+        this.setMarca(marca);
+        this.setModelo(modelo);
+        this.setColor_Hex(color_Hex);
+        v.usp_insVehiculo(this);
+        return this.getVehiculo_Id();
+    }
+
 }
