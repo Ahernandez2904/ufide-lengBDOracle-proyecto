@@ -2,6 +2,7 @@ package com.mycompany.parqueo;
 
 import com.mycompany.parqueo.DAO.FacturaDAO;
 import java.sql.Date;
+//import java.util.Date;
 import java.sql.SQLException;
 
 public class Factura {

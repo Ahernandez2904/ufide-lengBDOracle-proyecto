@@ -22,8 +22,8 @@ public class FacturaDAO extends Conexion {
             cstm.setDate(1, factura.getFecha_Creacion()); //falta convertir al formato
             cstm.setInt(2, factura.getCliente_Id());
             cstm.setInt(3, factura.getEstado_Id());
-            cstm.setInt(6, factura.getTotal_Factura());
-            cstm.registerOutParameter("cliente_id", Types.INTEGER);
+            cstm.setInt(4, factura.getTotal_Factura());
+            cstm.registerOutParameter("FACTURA_IDFAC", Types.INTEGER);
             cstm.execute();
             factura.setFactura_Id(cstm.getInt("FACTURA_IDFAC"));
             conn.getConn().commit();
