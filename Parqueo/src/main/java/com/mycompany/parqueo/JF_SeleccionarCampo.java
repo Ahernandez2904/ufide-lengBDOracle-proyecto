@@ -150,10 +150,6 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         //Existe cliente relacionado a la placa
         new JF_SeleccionarClientes().setVisible(true);
         this.setVisible(false);
-
-        //No existe cliente relacionado a la placa
-        new JF_NuevoCliente().setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPisoActionPerformed

@@ -56,7 +56,7 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setText("INFORMACION DE TICKET");
+        jLabel1.setText("Información de Ticket");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setText("1--FECHA DE CREACIÓN");

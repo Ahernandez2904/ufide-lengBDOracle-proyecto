@@ -45,7 +45,7 @@ public class JF_MostrarFactura extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel4.setText("INFORMACIÓN DE FACTURA");
+        jLabel4.setText("Información de factura");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("1--Detalle");

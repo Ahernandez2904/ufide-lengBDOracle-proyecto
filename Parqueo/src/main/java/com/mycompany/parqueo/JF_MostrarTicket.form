@@ -105,7 +105,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="INFORMACION DE TICKET"/>
+        <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de Ticket"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

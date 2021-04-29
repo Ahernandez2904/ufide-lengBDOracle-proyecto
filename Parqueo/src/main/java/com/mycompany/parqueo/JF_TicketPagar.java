@@ -106,7 +106,8 @@ public class JF_TicketPagar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+        new JF_Menu().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTicketActionPerformed

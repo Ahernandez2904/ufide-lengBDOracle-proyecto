@@ -122,7 +122,7 @@ public class JF_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
-        new JF_ConsultarTicket().setVisible(true);
+        new JF_TicketPagar().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPagarActionPerformed
 
