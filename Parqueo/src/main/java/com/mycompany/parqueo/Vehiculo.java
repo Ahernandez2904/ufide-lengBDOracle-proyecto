@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.VehiculoDAO;
+import java.sql.SQLException;
 
-
-/**
- *
- * @author Ale
- */
 public class Vehiculo {
     private int vehiculo_Id; 
     private String placa; 
@@ -18,6 +10,7 @@ public class Vehiculo {
     private String marca; 
     private int modelo; 
     private String color_Hex;
+    private VehiculoDAO v = new VehiculoDAO();
 
     public int getVehiculo_Id() {
         return vehiculo_Id;

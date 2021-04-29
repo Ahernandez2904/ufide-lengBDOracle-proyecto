@@ -2,18 +2,10 @@ package com.mycompany.parqueo;
 
 public class Persona {
     private String nombre;
-    private String apellido1;
-    private String apellido2;
+    private String primer_Apellido;
+    private String segundo_Apellido;
     private String direccion;
     private String dni;
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
 
     public Persona() {
     }
@@ -26,20 +18,20 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellido1() {
-        return apellido1;
+    public String getPrimer_Apellido() {
+        return primer_Apellido;
     }
 
-    public void setApellido1(String apellido1) {
-        this.apellido1 = apellido1;
+    public void setPrimer_Apellido(String primer_Apellido) {
+        this.primer_Apellido = primer_Apellido;
     }
 
-    public String getApellido2() {
-        return apellido2;
+    public String getSegundo_Apellido() {
+        return segundo_Apellido;
     }
 
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
+    public void setSegundo_Apellido(String segundo_Apellido) {
+        this.segundo_Apellido = segundo_Apellido;
     }
 
     public String getDireccion() {
@@ -48,6 +40,14 @@ public class Persona {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
     
 }

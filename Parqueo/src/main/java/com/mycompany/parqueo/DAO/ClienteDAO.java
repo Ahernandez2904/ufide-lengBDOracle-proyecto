@@ -28,11 +28,11 @@ public class ClienteDAO extends Conexion {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
             cstm.setString(1, cliente.getNombre());
-            cstm.setString(2, cliente.getApellido1());
-            cstm.setString(3, cliente.getApellido2());
+            cstm.setString(2, cliente.getPrimer_Apellido());
+            cstm.setString(3, cliente.getSegundo_Apellido());
             cstm.setString(4, cliente.getDni());
-            cstm.setString(5, cliente.getDireccion());
-            cstm.setInt(6, cliente.getDistrito());
+            //detalle direccion cstm.setString(5, cliente.getDireccion());
+            //estadoclientecstm.setInt(6, cliente.getDistrito());
             cstm.registerOutParameter("cliente_id", Types.INTEGER);
             cstm.execute();
             cliente.setCodCliente(cstm.getInt("cliente_id"));

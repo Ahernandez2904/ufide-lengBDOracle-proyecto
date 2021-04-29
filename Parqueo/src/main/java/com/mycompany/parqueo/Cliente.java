@@ -4,13 +4,11 @@ import com.mycompany.parqueo.DAO.ClienteDAO;
 import java.sql.SQLException;
 
 public class Cliente extends Persona {
-    int codCliente;
+    private int codCliente;
     private ClienteDAO cl = new ClienteDAO();
-    private String direccion;
-    private int distrito;
-    
-    public Cliente() {
-    }
+    private int estado_Cliente;
+    private int detalle_Dir_Id;
+    public Cliente() { }
 
     public int getCodCliente() {
         return codCliente;
@@ -19,32 +17,32 @@ public class Cliente extends Persona {
     public void setCodCliente(int codCliente) {
         this.codCliente = codCliente;
     }
-
-    public String getDireccion() {
-        return direccion;
+    
+    public int getEstado_Cliente() {
+        return estado_Cliente;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setEstado_Cliente(int estado_Cliente) {
+        this.estado_Cliente = estado_Cliente;
     }
 
-    public int getDistrito() {
-        return distrito;
+    public int getDetalle_Dir_Id() {
+        return detalle_Dir_Id;
     }
 
-    public void setDistrito(int distrito) {
-        this.distrito = distrito;
+    public void setDetalle_Dir_Id(int detalle_Dir_Id) {
+        this.detalle_Dir_Id = detalle_Dir_Id;
     }
     
-    public int registrar(String nombre, String apellido1, String apellido2, String dni, String direccion, int distrito) throws SQLException{
-        this.direccion = direccion;
-        this.distrito = distrito;
+    public int insertar(String nombre, String primer_Apellido, String segundo_Apellido, String dni, int detalle_Dir_Id, int estado_cliente) throws SQLException{
         super.setNombre(nombre);
-        super.setApellido1(apellido1);
-        super.setApellido2(apellido2);
+        super.setPrimer_Apellido(primer_Apellido);
+        super.setSegundo_Apellido(segundo_Apellido);
         super.setDni(dni);
-        
+        this.setEstado_Cliente(estado_cliente);
+        this.setDetalle_Dir_Id(detalle_Dir_Id);
         cl.usp_insCliente(this);
         return codCliente;
     }
+    
 }

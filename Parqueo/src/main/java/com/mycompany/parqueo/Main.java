@@ -8,7 +8,7 @@ public class Main {
         
         Cliente c = new Cliente();
         try {
-            c.registrar("Pedro", "Jimenez", "Perez", "123412345", "200 mts Oeste", 1);
+            c.insertar("Pedro", "Jimenez", "Perez", "123412345", 1/*Detalle_dir_id*/, 1/*Estado cliente*/);
         } catch (Exception e) {
             System.out.println("Error: "+e);
         }        
