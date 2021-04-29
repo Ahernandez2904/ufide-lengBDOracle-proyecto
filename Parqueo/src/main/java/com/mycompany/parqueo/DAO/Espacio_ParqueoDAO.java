@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import javax.swing.JOptionPane;
 
-public class Espacio_ParqueoDAO {
+public class Espacio_ParqueoDAO extends Conexion  {
     private Espacio_Parqueo espacio_Parqueo;
     private Conexion conn;
     

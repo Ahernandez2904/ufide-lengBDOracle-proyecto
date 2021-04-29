@@ -42,4 +42,7 @@ public class Parqueo {
         this.estado_Id = estado_Id;
     }
     
+    public void seleccionarTodos () {
+        
+    }
 }
