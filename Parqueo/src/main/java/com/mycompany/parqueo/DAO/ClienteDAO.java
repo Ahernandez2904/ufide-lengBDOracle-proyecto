@@ -21,7 +21,7 @@ public class ClienteDAO extends Conexion {
     public ClienteDAO() {
     }
 
-    public Cliente insertCliente(Cliente cl) throws SQLException {
+    public Cliente usp_insCliente(Cliente cl) throws SQLException {
         this.cliente = cl;
         String sqlString = "{call usp_insCliente (?,?,?,?,?,?)}";
         try {

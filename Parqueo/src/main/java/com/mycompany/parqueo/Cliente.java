@@ -44,7 +44,7 @@ public class Cliente extends Persona {
         super.setApellido2(apellido2);
         super.setDni(dni);
         
-        cl.insertCliente(this);
+        cl.usp_insCliente(this);
         return codClinente;
     }
 }

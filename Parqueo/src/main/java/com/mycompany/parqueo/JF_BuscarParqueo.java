@@ -102,15 +102,15 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         String placaIngresada = txtPlaca.getText();
-
-        //Enlace para ir a la pagina de ingresar nuevo vehiculo
-        new JF_NuevoVehiculo().setVisible(true);
-        this.setVisible(false);
-        
-        
-        //Enlace para mostrar los parqueos
-        new JF_SeleccionarParqueo().setVisible(true);
-        this.setVisible(false);
+        String placaBD = "";
+        //Buscar entre las placas y si la placa es igual a una existente, placaBD = registro
+        if (placaBD.equals(placaIngresada)) {
+            new JF_SeleccionarParqueo().setVisible(true);
+            this.setVisible(false);
+        } else {
+            new JF_NuevoVehiculo().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
