@@ -9,8 +9,10 @@ import com.mycompany.parqueo.DAO.ParqueoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -144,9 +146,14 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
             //parqueos = parqueo.seleccionarTodos();
             parqueos = p2.usp_sel_totalParqueo();
         } catch (Exception e) { System.out.println("A");}
+            Vector model = new Vector();
         for (int i=0; i<parqueos.size(); i++){
-            System.out.println("Element "+i+parqueos.get(i));
+            //cmbParqueo.add; //add(parqueos.get(i).getParqueo_Id(),parqueos.get(i).getDescripcion());
+            //System.out.println("Element "+i+parqueos.get(i));
+            model.addElement(new Item());
+            model.setElementAt(parqueos.get(i).getDescripcion(), parqueos.get(i).getParqueo_Id());
         }
+        cmbParqueo = new JComboBox(model);
         
     }
 
