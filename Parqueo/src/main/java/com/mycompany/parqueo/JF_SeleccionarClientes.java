@@ -5,12 +5,18 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.ClienteDAO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Ale
  */
 public class JF_SeleccionarClientes extends javax.swing.JFrame {
-
+    ClienteDAO c_dao;
+    List<Cliente> c_list;
     /**
      * Creates new form JF_SeleccionarClientes
      */
@@ -56,6 +62,11 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         });
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbClienteActionPerformed(evt);
+            }
+        });
 
         btnVolver.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnVolver.setText("Volver");
@@ -116,6 +127,10 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void cmbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,7 +185,21 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
     public void setVehiculo(Vehiculo v) {
         vehiculo = v;
     }
-
+    
+    public void actualizarCmbCliente() throws SQLException {
+        Vehiculo v = new Vehiculo(); //Eliminar cuando se reciba el objeto
+        v.setVehiculo_Id(22); //Eliminar cuando se reciba el objeto
+        
+        List<String> clientes = new ArrayList<String>();
+        c_list = new ArrayList<Cliente>();
+        c_list = c_dao.USP_selClienteXVehiculo(v);
+        cmbCliente.removeAllItems();
+        for (int i = 0; i < c_list.size(); i++) {
+            String nombre = c_list.get(i).getNombre()+" "+c_list.get(i).getPrimer_Apellido()+" "+c_list.get(i).getSegundo_Apellido();
+            cmbCliente.addItem(nombre);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnCrear;
