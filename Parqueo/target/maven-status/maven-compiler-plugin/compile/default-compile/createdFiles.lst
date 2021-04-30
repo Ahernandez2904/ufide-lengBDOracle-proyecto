@@ -6,6 +6,7 @@ com\mycompany\parqueo\JF_MostrarTicket.class
 com\mycompany\parqueo\JF_ConsultarTicket.class
 com\mycompany\parqueo\JF_TicketPagar$1.class
 com\mycompany\parqueo\JF_SeleccionarCampo$2.class
+com\mycompany\parqueo\JF_SeleccionarClientes$4.class
 com\mycompany\parqueo\JF_IngresarCliente$2.class
 com\mycompany\parqueo\JF_NuevaFactura$3.class
 com\mycompany\parqueo\Espacio_Parqueo.class

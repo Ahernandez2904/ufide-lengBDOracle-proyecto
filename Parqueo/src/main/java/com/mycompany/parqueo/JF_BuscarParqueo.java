@@ -125,7 +125,7 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
         
         try {
             v = vd.USP_SELVEHICULO(placaIngresada);
-            if (placaBD.equals(placaIngresada)) {
+            if (v.getPlaca().equals(placaIngresada)) {
                 JF_SeleccionarClientes jf = new JF_SeleccionarClientes();
                 jf.setVisible(true);
                 jf.setParqueo(parqueo);

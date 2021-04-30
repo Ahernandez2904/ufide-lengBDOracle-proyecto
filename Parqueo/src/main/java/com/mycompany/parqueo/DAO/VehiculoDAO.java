@@ -52,7 +52,7 @@ public class VehiculoDAO extends Conexion {
             cstm.setString(1, pl);
             cstm.registerOutParameter(2, OracleTypes.CURSOR);
             cstm.executeUpdate();
-            ResultSet rs = (ResultSet) cstm.getObject(1);
+            ResultSet rs = (ResultSet) cstm.getObject(2);
             while (rs.next()) {
                 vehiculo = new Vehiculo();
                 vehiculo.setPlaca(rs.getString("placa"));
