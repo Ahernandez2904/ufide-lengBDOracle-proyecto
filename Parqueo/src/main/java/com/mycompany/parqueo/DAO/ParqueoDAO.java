@@ -6,6 +6,7 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -25,10 +26,12 @@ public class ParqueoDAO extends Conexion {
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
-            cstm.registerOutParameter(1, OracleTypes.CURSOR);
-            cstm.executeQuery();
-            ResultSet rs = cstm.getObject(1, ResultSet.class);
-            conn.getConn().commit();
+            //cstm.registerOutParameter(1, OracleTypes.CURSOR);
+            cstm.setNull(1, Types.REF);
+            cstm.registerOutParameter(1, Types.REF);
+            cstm.execute();
+            ResultSet rs = (ResultSet)cstm.getObject(1);
+            //conn.getConn().commit();
             while (rs.next()) {
                 parqueo = new Parqueo();
                 parqueo.setDescripcion(rs.getString("descripcion"));
