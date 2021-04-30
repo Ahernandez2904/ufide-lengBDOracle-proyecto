@@ -198,7 +198,9 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
                 JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
                 jf.setVisible(true);
                 try {
-                    jf.actualizarCmbPiso();
+                    Parqueo p = new Parqueo();
+                    p.setParqueo_Id(12);
+                    jf.actualizarCmbPiso(p);
                 } catch (SQLException ex) {
                     Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -114,10 +114,14 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         int id = 0;
         for (int i=0; i<parqueos.size(); i++){
             if(parqueos.get(i).getDescripcion().equals(x)) {
-                JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
-                jf.setVisible(true);
-                jf.actualizarCmbPiso(parqueos.get(i));
-                dispose();
+                try {
+                    JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
+                    jf.setVisible(true);
+                    jf.actualizarCmbPiso(parqueos.get(i));
+                    dispose();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
