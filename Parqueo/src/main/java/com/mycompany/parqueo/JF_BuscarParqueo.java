@@ -152,6 +152,21 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
             }
         });
     }
+    
+    Parqueo parqueo = new Parqueo();
+    public void setParqueo(Parqueo p) {
+        parqueo = p;
+    }
+    
+    Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
+    public void setEspacio_Parqueo(Espacio_Parqueo ep) {
+        espacio_Parqueo = ep;
+    }
+    
+    Seccion_Parqueo seccion_Parqueo = new Seccion_Parqueo();
+    public void setSeccion_Parqueo(Seccion_Parqueo sp) {
+        seccion_Parqueo = sp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVerificar;

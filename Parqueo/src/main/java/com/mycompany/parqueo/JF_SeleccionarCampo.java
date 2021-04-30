@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 public class JF_SeleccionarCampo extends javax.swing.JFrame {
     Parqueo p = new Parqueo();
     Seccion_Parqueo sp = new Seccion_Parqueo();
+    Espacio_Parqueo ep = new Espacio_Parqueo();
     Seccion_ParqueoDAO sp_DAO = new Seccion_ParqueoDAO();
     Espacio_ParqueoDAO ep_DAO = new Espacio_ParqueoDAO();
     List<Seccion_Parqueo> secParqueos;
@@ -184,8 +185,18 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         //Existe cliente relacionado a la placa
-        new JF_SeleccionarClientes().setVisible(true);
-        this.setVisible(false);
+        JF_BuscarParqueo jf = new JF_BuscarParqueo();
+        jf.setVisible(true);
+        jf.setParqueo(p);
+        jf.setSeccion_Parqueo(sp);
+        String x = cmbEspacio.getSelectedItem().toString();
+        for (int i=0; i<ep1.size(); i++){
+            if(ep1.get(i).getEspacio_Id() == Integer.parseInt(x)) {
+                ep = ep1.get(i);
+            }
+        }
+        jf.setEspacio_Parqueo(ep);
+        dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPisoActionPerformed
@@ -274,7 +285,8 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         ep1 = ep_DAO.usp_selespacio_parqueo(this.sp);
         cmbEspacio.removeAllItems();
         for (int i = 0; i < ep1.size(); i++) {
-            cmbEspacio.addItem("Pos. "+ep1.get(i).getEspacio_Id());
+            //cmbEspacio.addItem("Pos. "+ep1.get(i).getEspacio_Id());
+            cmbEspacio.addItem(""+ep1.get(i).getEspacio_Id());
         }
     }
 

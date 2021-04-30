@@ -284,6 +284,11 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         espacio_Parqueo = ep;
     }
     
+    Seccion_Parqueo seccion_Parqueo = new Seccion_Parqueo();
+    public void setSeccion_Parqueo(Seccion_Parqueo sp) {
+        seccion_Parqueo = sp;
+    }
+    
     Vehiculo vehiculo = new Vehiculo();
     public void setVehiculo(Vehiculo v) {
         vehiculo = v;
