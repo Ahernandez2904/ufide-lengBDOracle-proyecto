@@ -27,14 +27,9 @@ public class ParqueoDAO extends Conexion {
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
-            //cstm.registerOutParameter(1, OracleTypes.CURSOR);
-            //cstm.setNull(1, Types.REF);
-            //cstm.registerOutParameter(1, Types.REF);
             cstm.registerOutParameter(1, OracleTypes.CURSOR);
             cstm.executeUpdate();
-            //ResultSet rs = ((OracleCallableStatement)cstm).getCursor(1);
             ResultSet rs = (ResultSet) cstm.getObject(1);
-            //conn.getConn().commit();
             while (rs.next()) {
                 parqueo = new Parqueo();
                 parqueo.setDescripcion(rs.getString("descripcion"));

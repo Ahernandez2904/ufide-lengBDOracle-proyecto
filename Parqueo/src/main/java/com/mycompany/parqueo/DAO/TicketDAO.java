@@ -26,7 +26,9 @@ public class TicketDAO extends Conexion {
     
     public Ticket usp_insTicket(Ticket t) throws SQLException {
         this.ticket = t;
-        String sqlString = "{call usp_insTicket (?,?,?,?,?,?,?)}";
+        String sqlString = "{call usp_insTicket (?,?,?,?,?,?,?,?)}";
+        conn = new Conexion();
+        
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);

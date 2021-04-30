@@ -22,7 +22,9 @@ public class ClienteDAO extends Conexion {
 
     public Cliente usp_insCliente(Cliente cl) throws SQLException {
         this.cliente = cl;
-        String sqlString = "{call usp_insCliente (?,?,?,?,?,?)}";
+        String sqlString = "{call usp_insCliente (?,?,?,?,?,?,?)}";
+        conn = new Conexion();
+        
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);

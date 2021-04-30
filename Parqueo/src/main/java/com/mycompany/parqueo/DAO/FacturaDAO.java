@@ -15,7 +15,9 @@ public class FacturaDAO extends Conexion {
     
     public Factura usp_insFactura(Factura f) throws SQLException {
         this.factura = f;
-        String sqlString = "{call usp_insFactura (?,?,?,?)}";
+        String sqlString = "{call usp_insFactura (?,?,?,?,?)}";
+        conn = new Conexion();
+        
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);

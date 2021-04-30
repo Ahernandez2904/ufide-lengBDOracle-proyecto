@@ -16,7 +16,8 @@ public class VehiculoDAO extends Conexion {
     
     public Vehiculo usp_insVehiculo(Vehiculo v) throws SQLException {
         this.vehiculo = v;
-        String sqlString = "{call usp_insVehiculo (?,?,?,?,?)}";
+        conn = new Conexion();
+        String sqlString = "{call usp_insVehiculo (?,?,?,?,?,?)}";
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
