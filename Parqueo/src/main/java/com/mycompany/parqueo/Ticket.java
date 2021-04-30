@@ -80,8 +80,7 @@ public class Ticket {
         this.espacio_Id = espacio_Id;
     }
     
-    public int insertar(Date fecha_Creacion, Date fecha_Entrada, Date fecha_Salida, int inventario_Id, int vehiculo_Id, int estado_Id, int espacio_Id) throws SQLException {
-        this.setFecha_Creacion(fecha_Creacion);
+    public int insertar(Date fecha_Entrada, Date fecha_Salida, int inventario_Id, int vehiculo_Id, int estado_Id, int espacio_Id) throws SQLException {
         this.setFecha_Entrada(fecha_Entrada);
         this.setFecha_Salida(fecha_Salida);
         this.setInventario_Id(inventario_Id);

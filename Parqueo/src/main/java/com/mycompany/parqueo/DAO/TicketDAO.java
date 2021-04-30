@@ -32,13 +32,12 @@ public class TicketDAO extends Conexion {
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
-            cstm.setDate(1, ticket.getFecha_Creacion());
-            cstm.setDate(2, ticket.getFecha_Entrada());
-            cstm.setDate(3, ticket.getFecha_Salida());
-            cstm.setInt(4, ticket.getInventario_Id());
-            cstm.setInt(5, ticket.getVehiculo_Id());
-            cstm.setInt(6, ticket.getEstado_Id());
-            cstm.setInt(7, ticket.getEspacio_Id());
+            cstm.setDate(1, ticket.getFecha_Entrada());
+            cstm.setDate(2, ticket.getFecha_Salida());
+            cstm.setInt(3, ticket.getInventario_Id());
+            cstm.setInt(4, ticket.getVehiculo_Id());
+            cstm.setInt(5, ticket.getEstado_Id());
+            cstm.setInt(6, ticket.getEspacio_Id());
             cstm.registerOutParameter("ticket_id", Types.INTEGER);
             cstm.execute();
             ticket.setVehiculo_Id(cstm.getInt("ticket_id"));

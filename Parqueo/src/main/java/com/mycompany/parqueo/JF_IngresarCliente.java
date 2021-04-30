@@ -292,18 +292,20 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         c.setDireccion(txtDetalle_Direccion.getText());
         c.setDistrito_Id(1);
         c.setDni(txtDni.getText());
-        c.insertar(c.getNombre(),c.getPrimer_Apellido(),c.getSegundo_Apellido(),c.getDni(),c.getDireccion(),c.getDistrito_Id(), c.getEstado_Cliente());
+        c.insertar(c.getNombre(),c.getPrimer_Apellido(),c.getSegundo_Apellido(),
+                c.getDni(),c.getDireccion(),c.getDistrito_Id(), c.getEstado_Cliente());
     }
     
     public void insertarNuevoTicket() throws SQLException{
         Ticket t = new Ticket();
         t.setEspacio_Id(espacio_Parqueo.getEspacio_Id());
-        t.setEstado_Id(); //
-        t.setFecha_Creacion();
-        t.setFecha_Entrada();
-        t.setInventario_Id();
-        t.setVehiculo_Id();
-        t.insertar(fecha_Creacion, fecha_Entrada, fecha_Salida, MOVE_CURSOR, ICONIFIED, ERROR, ERROR)
+        t.setEstado_Id(43); //Pendiente de pago -> 43
+        //t.setFecha_Creacion();
+        //t.setFecha_Entrada();
+        //t.setInventario_Id();
+        t.setVehiculo_Id(vehiculo.getVehiculo_Id());
+        t.insertar(t.getFecha_Entrada(), null, t.getInventario_Id(), 
+                t.getVehiculo_Id(), t.getEstado_Id(), t.getEspacio_Id());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
