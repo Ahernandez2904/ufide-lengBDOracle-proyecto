@@ -11,6 +11,7 @@ import java.sql.CallableStatement;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,7 @@ public class TicketDAO extends Conexion {
         
         try {
             conn.openConn();
+            System.out.println(ticket.getFecha_Entrada());
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
             cstm.setDate(1, ticket.getFecha_Entrada());
             cstm.setDate(2, ticket.getFecha_Salida());

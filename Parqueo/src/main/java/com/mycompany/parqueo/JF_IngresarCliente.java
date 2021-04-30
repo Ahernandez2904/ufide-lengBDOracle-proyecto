@@ -6,6 +6,8 @@
 package com.mycompany.parqueo;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -269,17 +271,17 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
     }
     
     Parqueo parqueo = new Parqueo();
-    public void getParqueo(Parqueo p) {
+    public void setParqueo(Parqueo p) {
         parqueo = p;
     }
     
     Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
-    public void getEspacio_Parqueo(Espacio_Parqueo ep) {
+    public void setEspacio_Parqueo(Espacio_Parqueo ep) {
         espacio_Parqueo = ep;
     }
     
     Vehiculo vehiculo = new Vehiculo();
-    public void getVehiculo(Vehiculo v) {
+    public void setVehiculo(Vehiculo v) {
         vehiculo = v;
     }
     
@@ -300,12 +302,13 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         Ticket t = new Ticket();
         t.setEspacio_Id(espacio_Parqueo.getEspacio_Id());
         t.setEstado_Id(43); //Pendiente de pago -> 43
-        //t.setFecha_Creacion();
-        //t.setFecha_Entrada();
-        //t.setInventario_Id();
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yy hh.mm.ss.SSSSSSSSS a");
+        sdf.format(date);
+        t.setFecha_Entrada((java.sql.Date) date);
+        t.setInventario_Id(1); //Registro único -> 1
         t.setVehiculo_Id(vehiculo.getVehiculo_Id());
-        t.insertar(t.getFecha_Entrada(), null, t.getInventario_Id(), 
-                t.getVehiculo_Id(), t.getEstado_Id(), t.getEspacio_Id());
+        t.insertar(t.getFecha_Entrada(), null, t.getInventario_Id(), t.getVehiculo_Id(), t.getEstado_Id(), t.getEspacio_Id());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
