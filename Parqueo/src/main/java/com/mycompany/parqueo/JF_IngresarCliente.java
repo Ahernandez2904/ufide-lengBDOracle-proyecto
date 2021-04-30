@@ -5,6 +5,10 @@
  */
 package com.mycompany.parqueo;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author fabia
@@ -181,19 +185,28 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        new JF_MostrarTicket().setVisible(true);
-        this.setVisible(false);
+        try {
+            insertarNuevoCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_IngresarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int ticket_Id = 0;
+        
+        JF_MostrarTicket jf = new JF_MostrarTicket();
+        jf.setTicket(ticket_Id);
+        dispose();
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtPrimer_ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrimer_ApellidoActionPerformed
@@ -253,6 +266,44 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
                 new JF_IngresarCliente().setVisible(true);
             }
         });
+    }
+    
+    Parqueo parqueo = new Parqueo();
+    public void getParqueo(Parqueo p) {
+        parqueo = p;
+    }
+    
+    Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
+    public void getEspacio_Parqueo(Espacio_Parqueo ep) {
+        espacio_Parqueo = ep;
+    }
+    
+    Vehiculo vehiculo = new Vehiculo();
+    public void getVehiculo(Vehiculo v) {
+        vehiculo = v;
+    }
+    
+    public void insertarNuevoCliente() throws SQLException{
+        Cliente c = new Cliente();
+        c.setNombre(txtNombre.getText());
+        c.setPrimer_Apellido(txtPrimer_Apellido.getText());
+        c.setSegundo_Apellido(txtSegundo_Apellido.getText());
+        c.setEstado_Cliente(25); //Id de activo
+        c.setDireccion(txtDetalle_Direccion.getText());
+        c.setDistrito_Id(1);
+        c.setDni(txtDni.getText());
+        c.insertar(c.getNombre(),c.getPrimer_Apellido(),c.getSegundo_Apellido(),c.getDni(),c.getDireccion(),c.getDistrito_Id(), c.getEstado_Cliente());
+    }
+    
+    public void insertarNuevoTicket() throws SQLException{
+        Ticket t = new Ticket();
+        t.setEspacio_Id(espacio_Parqueo.getEspacio_Id());
+        t.setEstado_Id(); //
+        t.setFecha_Creacion();
+        t.setFecha_Entrada();
+        t.setInventario_Id();
+        t.setVehiculo_Id();
+        t.insertar(fecha_Creacion, fecha_Entrada, fecha_Salida, MOVE_CURSOR, ICONIFIED, ERROR, ERROR)
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

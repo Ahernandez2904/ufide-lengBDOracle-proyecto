@@ -10,7 +10,7 @@ package com.mycompany.parqueo;
  * @author fabia
  */
 public class JF_MostrarTicket extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form JF_MostrarFactura
      */

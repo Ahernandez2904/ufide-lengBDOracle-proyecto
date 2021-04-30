@@ -8,7 +8,7 @@ public class Cliente extends Persona {
     private int codCliente;
     private int estado_Cliente;
     private int detalle_Dir_Id;
-    private String detalle_Dir;
+    private int distrito_Id;
     
     public Cliente() { }
 
@@ -35,22 +35,23 @@ public class Cliente extends Persona {
     public void setDetalle_Dir_Id(int detalle_Dir_Id) {
         this.detalle_Dir_Id = detalle_Dir_Id;
     }
-    
-    public String getDetalle_Dir() {
-        return detalle_Dir;
+
+    public int getDistrito_Id() {
+        return distrito_Id;
     }
 
-    public void setDetalle_Dir(String detalle_Dir) {
-        this.detalle_Dir = detalle_Dir;
+    public void setDistrito_Id(int distrito_Id) {
+        this.distrito_Id = distrito_Id;
     }
     
-    public int insertar(String nombre, String primer_Apellido, String segundo_Apellido, String dni, String detalle_Dir, int estado_cliente) throws SQLException {
+    public int insertar(String nombre, String primer_Apellido, String segundo_Apellido, String dni, String detalle_Dir, int distrito_Id, int estado_cliente) throws SQLException {
         super.setNombre(nombre);
         super.setPrimer_Apellido(primer_Apellido);
         super.setSegundo_Apellido(segundo_Apellido);
         super.setDni(dni);
+        super.setDireccion(detalle_Dir);
         this.setEstado_Cliente(estado_cliente);
-        this.setDetalle_Dir(detalle_Dir);
+        this.setDistrito_Id(distrito_Id);
         cl.usp_insCliente(this);
         return this.getCodCliente();
     }
