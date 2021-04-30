@@ -39,14 +39,16 @@ public class ClienteDAO extends Conexion {
             cstm.setString(4, cliente.getDni());
             cstm.setString(5, cliente.getDireccion());
             cstm.setInt(6, cliente.getDistrito_Id());
+            //cstm.setNull(6, java.sql.Types.INTEGER);
             cstm.setInt(7, cliente.getEstado_Cliente());
             cstm.registerOutParameter(8, Types.INTEGER);
-            cstm.execute();
+            cstm.executeUpdate();
             cliente.setCodCliente(cstm.getInt(8));
+            conn.getConn().setAutoCommit (false);
             conn.getConn().commit();
             conn.getConn().close();
             return cliente;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             conn.getConn().close();
             return cliente;

@@ -205,6 +205,7 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         }
         
         JF_MostrarTicket jf = new JF_MostrarTicket();
+        jf.setVisible(true);
         jf.setTicket(t);
         dispose();
         
