@@ -198,7 +198,7 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
                 JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
                 jf.setVisible(true);
                 try {
-                    jf.actualizarCmbParqueo();
+                    jf.actualizarCmbPiso();
                 } catch (SQLException ex) {
                     Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -206,15 +206,15 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarCmbParqueo() throws SQLException {
+    public void actualizarCmbPiso() throws SQLException {
         Parqueo p = new Parqueo();//Eliminar cuando se reciba el objeto
         p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto
         List<String> sp = new ArrayList<String>();
         List<Seccion_Parqueo> secParqueos = new ArrayList<Seccion_Parqueo>();
         secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(p);
-        cmbEspacio.removeAllItems();
+        cmbPiso.removeAllItems();
         for (int i = 0; i < secParqueos.size(); i++) {
-            cmbEspacio.addItem(secParqueos.get(i).getDescripcion());
+            cmbPiso.addItem(secParqueos.get(i).getDescripcion());
         }
     }
 
