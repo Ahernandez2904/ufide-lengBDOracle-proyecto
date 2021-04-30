@@ -31,6 +31,7 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnContinuar = new javax.swing.JButton();
         cmbCliente = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,14 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnVolver.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,10 +72,11 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
@@ -74,18 +84,20 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(cmbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnContinuar)
                 .addGap(18, 18, 18)
                 .addComponent(btnCrear)
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18)
+                .addComponent(btnVolver)
+                .addGap(22, 22, 22))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(jLabel2)
-                    .addContainerGap(170, Short.MAX_VALUE)))
+                    .addContainerGap(210, Short.MAX_VALUE)))
         );
 
         pack();
@@ -99,6 +111,10 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,10 +150,31 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
             }
         });
     }
+    
+    Parqueo parqueo = new Parqueo();
+    public void setParqueo(Parqueo p) {
+        parqueo = p;
+    }
+    
+    Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
+    public void setEspacio_Parqueo(Espacio_Parqueo ep) {
+        espacio_Parqueo = ep;
+    }
+    
+    Seccion_Parqueo seccion_Parqueo = new Seccion_Parqueo();
+    public void setSeccion_Parqueo(Seccion_Parqueo sp) {
+        seccion_Parqueo = sp;
+    }
+    
+    Vehiculo vehiculo = new Vehiculo();
+    public void setVehiculo(Vehiculo v) {
+        vehiculo = v;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbCliente;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

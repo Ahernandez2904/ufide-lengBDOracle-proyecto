@@ -5,6 +5,11 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.VehiculoDAO;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ale
@@ -32,6 +37,7 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
         txtPlaca = new javax.swing.JTextField();
         btnVerificar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +60,9 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setText("Ejemplo: ABC123");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,8 +77,13 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
                         .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,7 +97,9 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver)
                     .addComponent(btnVerificar))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,13 +119,38 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         String placaIngresada = txtPlaca.getText();
         String placaBD = "";
+        
+        Vehiculo v = new Vehiculo();
+        VehiculoDAO vd = new VehiculoDAO();
+        
+        try {
+            v = vd.USP_SELVEHICULO(placaIngresada);
+            if (placaBD.equals(placaIngresada)) {
+                JF_SeleccionarClientes jf = new JF_SeleccionarClientes();
+                jf.setVisible(true);
+                jf.setParqueo(parqueo);
+                jf.setEspacio_Parqueo(espacio_Parqueo);
+                jf.setSeccion_Parqueo(seccion_Parqueo);
+                jf.setVehiculo(v);
+                dispose();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_BuscarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+            JF_NuevoVehiculo jf2= new JF_NuevoVehiculo();
+            jf2.setVisible(true);
+            jf2.setParqueo(parqueo);
+            jf2.setEspacio_Parqueo(espacio_Parqueo);
+            jf2.setSeccion_Parqueo(seccion_Parqueo);
+            dispose();
+        }
+        
         //Buscar entre las placas y si la placa es igual a una existente, placaBD = registro
         if (placaBD.equals(placaIngresada)) {
-            new JF_SeleccionarParqueo().setVisible(true);
-            this.setVisible(false);
+            JF_SeleccionarClientes jf = new JF_SeleccionarClientes();
+            jf.setVisible(true);
+            dispose();
         } else {
-            new JF_NuevoVehiculo().setVisible(true);
-            this.setVisible(false);
+
         }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
@@ -172,6 +213,7 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
     private javax.swing.JButton btnVerificar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
