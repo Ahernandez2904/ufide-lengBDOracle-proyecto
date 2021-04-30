@@ -61,7 +61,7 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel3.setText("Ejemplo: ABC123");
+        jLabel3.setText("Ejemplo: DFG098");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,39 +119,44 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         String placaIngresada = txtPlaca.getText();
         String placaBD = "";
-        
+
         Vehiculo v = new Vehiculo();
         VehiculoDAO vd = new VehiculoDAO();
-        
+
         try {
             v = vd.USP_SELVEHICULO(placaIngresada);
-            if (v.getPlaca().equals(placaIngresada)) {
+            if (v == null) { //Si no existe la placa en DB, lo direcciona a JF_NuevoVehiculo
+                JF_NuevoVehiculo jf_nv = new JF_NuevoVehiculo();
+                jf_nv.setVisible(true);
+                this.dispose();
+            } else {
                 JF_SeleccionarClientes jf = new JF_SeleccionarClientes();
+                jf.actualizarCmbCliente(v);
                 jf.setVisible(true);
                 jf.setParqueo(parqueo);
                 jf.setEspacio_Parqueo(espacio_Parqueo);
                 jf.setSeccion_Parqueo(seccion_Parqueo);
                 jf.setVehiculo(v);
-                dispose();
+                this.dispose();
             }
         } catch (SQLException ex) {
             Logger.getLogger(JF_BuscarParqueo.class.getName()).log(Level.SEVERE, null, ex);
-            JF_NuevoVehiculo jf2= new JF_NuevoVehiculo();
+            /*JF_NuevoVehiculo jf2 = new JF_NuevoVehiculo();
             jf2.setVisible(true);
             jf2.setParqueo(parqueo);
             jf2.setEspacio_Parqueo(espacio_Parqueo);
             jf2.setSeccion_Parqueo(seccion_Parqueo);
-            dispose();
+            dispose();*/
         }
-        
-        //Buscar entre las placas y si la placa es igual a una existente, placaBD = registro
+
+/*        //Buscar entre las placas y si la placa es igual a una existente, placaBD = registro
         if (placaBD.equals(placaIngresada)) {
             JF_SeleccionarClientes jf = new JF_SeleccionarClientes();
             jf.setVisible(true);
             dispose();
         } else {
 
-        }
+        }*/
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -193,18 +198,21 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
             }
         });
     }
-    
+
     Parqueo parqueo = new Parqueo();
+
     public void setParqueo(Parqueo p) {
         parqueo = p;
     }
-    
+
     Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
+
     public void setEspacio_Parqueo(Espacio_Parqueo ep) {
         espacio_Parqueo = ep;
     }
-    
+
     Seccion_Parqueo seccion_Parqueo = new Seccion_Parqueo();
+
     public void setSeccion_Parqueo(Seccion_Parqueo sp) {
         seccion_Parqueo = sp;
     }

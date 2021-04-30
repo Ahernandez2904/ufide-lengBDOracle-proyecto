@@ -55,6 +55,7 @@ public class VehiculoDAO extends Conexion {
             ResultSet rs = (ResultSet) cstm.getObject(2);
             while (rs.next()) {
                 vehiculo = new Vehiculo();
+                vehiculo.setVehiculo_Id(rs.getInt("vehiculo_id"));
                 vehiculo.setPlaca(rs.getString("placa"));
                 vehiculo.setTipo_Vehiculo_Id(rs.getInt("tipo_Vehiculo_Id"));
                 vehiculo.setMarca(rs.getString("marca"));

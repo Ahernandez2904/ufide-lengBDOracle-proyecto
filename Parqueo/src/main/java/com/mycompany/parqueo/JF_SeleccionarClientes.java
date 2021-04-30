@@ -15,7 +15,7 @@ import java.util.List;
  * @author Ale
  */
 public class JF_SeleccionarClientes extends javax.swing.JFrame {
-    ClienteDAO c_dao;
+
     List<Cliente> c_list;
     /**
      * Creates new form JF_SeleccionarClientes
@@ -124,7 +124,9 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+        JF_BuscarParqueo jf_bp = new JF_BuscarParqueo();
+        jf_bp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void cmbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClienteActionPerformed
@@ -186,12 +188,12 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
         vehiculo = v;
     }
     
-    public void actualizarCmbCliente() throws SQLException {
-        Vehiculo v = new Vehiculo(); //Eliminar cuando se reciba el objeto
-        v.setVehiculo_Id(22); //Eliminar cuando se reciba el objeto
+    public void actualizarCmbCliente(Vehiculo v) throws SQLException {
+        //Vehiculo v = new Vehiculo(); //Eliminar cuando se reciba el objeto
+        //v.setVehiculo_Id(22); //Eliminar cuando se reciba el objeto
         
-        List<String> clientes = new ArrayList<String>();
         c_list = new ArrayList<Cliente>();
+        ClienteDAO c_dao = new ClienteDAO();
         c_list = c_dao.USP_selClienteXVehiculo(v);
         cmbCliente.removeAllItems();
         for (int i = 0; i < c_list.size(); i++) {
