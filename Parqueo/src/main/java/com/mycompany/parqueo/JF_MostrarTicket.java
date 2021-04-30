@@ -207,6 +207,11 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
             }
         });
     }
+    
+    Ticket ticket = new Ticket();
+    public void setTicket(Ticket t) {
+        ticket = t;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

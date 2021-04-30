@@ -26,6 +26,7 @@ public class Espacio_ParqueoDAO extends Conexion  {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
             cstm.setInt(1, 81); //Estado disponible
+            System.out.println(sp.getSeccion_Id());
             cstm.setInt(2, sp.getSeccion_Id());
             cstm.registerOutParameter(3, OracleTypes.CURSOR);
             cstm.execute();
@@ -35,6 +36,7 @@ public class Espacio_ParqueoDAO extends Conexion  {
                 espacio_Parqueo.setEspacio_Id(rs.getInt("espacio_id"));
                 espacio_Parqueo.setCategoria_Id(rs.getInt("categoria_id"));
                 espacio_Parqueo.setSeccion_Id(rs.getInt("seccion_id"));
+                e = new Estado();
                 e.setEstado_Id(rs.getInt("estado_id"));
                 e.setDescripcion(rs.getString("descripcion"));
                 espacio_Parqueo.setEstado(e);

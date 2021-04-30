@@ -203,10 +203,14 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_IngresarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int ticket_Id = 0;
+        try {
+            insertarNuevoTicket();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_IngresarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         JF_MostrarTicket jf = new JF_MostrarTicket();
-        jf.setTicket(ticket_Id);
+        jf.setTicket(t);
         dispose();
         
     }//GEN-LAST:event_btnConfirmarActionPerformed
@@ -285,8 +289,9 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         vehiculo = v;
     }
     
+    Cliente c;
     public void insertarNuevoCliente() throws SQLException{
-        Cliente c = new Cliente();
+        c = new Cliente();
         c.setNombre(txtNombre.getText());
         c.setPrimer_Apellido(txtPrimer_Apellido.getText());
         c.setSegundo_Apellido(txtSegundo_Apellido.getText());
@@ -297,9 +302,10 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         c.insertar(c.getNombre(),c.getPrimer_Apellido(),c.getSegundo_Apellido(),
                 c.getDni(),c.getDireccion(),c.getDistrito_Id(), c.getEstado_Cliente());
     }
-    
+        
+    Ticket t;
     public void insertarNuevoTicket() throws SQLException{
-        Ticket t = new Ticket();
+        t = new Ticket();
         t.setEspacio_Id(espacio_Parqueo.getEspacio_Id());
         t.setEstado_Id(43); //Pendiente de pago -> 43
         Date date = new Date();

@@ -23,6 +23,7 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
     Seccion_ParqueoDAO sp_DAO = new Seccion_ParqueoDAO();
     Espacio_ParqueoDAO ep_DAO = new Espacio_ParqueoDAO();
     List<Seccion_Parqueo> secParqueos;
+    List<Espacio_Parqueo> ep1;
     /**
      * Creates new form JF_SeleccionarCampo
      */
@@ -47,11 +48,12 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmbPiso = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setText("SELECCIONES SU ESPACIO");
+        jLabel2.setText("SELECCIONE SU ESPACIO");
 
         btnConfirmar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnConfirmar.setText("Confirmar");
@@ -69,7 +71,6 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
             }
         });
 
-        cmbEspacio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Campo 1", "Campo 2", "Campo 3", "Campo 4", "Campo 5", "Campo 6", "Campo 7", "Campo 8", "Campo 9", "Campo 10", "Campo 11", "Campo 12", "Campo 13", "Campo 14", "Campo 15", "Campo 16", "Campo 17", "Campo 18", "Campo 19", "Campo 20", "Campo 21", "Campo 22", "Campo 23", "Campo 24", "Campo 25", "Campo 26", "Campo 27", "Campo 28", "Campo 29", "Campo 30", "Campo 31", "Campo 32", "Campo 33", "Campo 34", "Campo 35", "Campo 36", "Campo 37", "Campo 38", "Campo 39", "Campo 40", "Campo 41", "Campo 42", "Campo 43", "Campo 44", "Campo 45", "Campo 46", "Campo 47", "Campo 48", "Campo 49", "Campo 50" }));
         cmbEspacio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbEspacioActionPerformed(evt);
@@ -134,17 +135,33 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnActualizar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -174,6 +191,14 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
     private void cmbPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPisoActionPerformed
 
     }//GEN-LAST:event_cmbPisoActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        try {
+            actualizarCmbEspacio();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_SeleccionarCampo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,27 +249,37 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         //p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto Parqueo
         List<String> sp = new ArrayList<String>();
         secParqueos = new ArrayList<Seccion_Parqueo>();
-        secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(p);
+        secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(this.p);
         cmbPiso.removeAllItems();
         for (int i = 0; i < secParqueos.size(); i++) {
             cmbPiso.addItem(secParqueos.get(i).getDescripcion());
         }
     }
     
-    public void actualizarCmbEspacio(Seccion_Parqueo sp) throws SQLException {
-        this.sp = sp;
+    public void actualizarCmbEspacio() throws SQLException {
+        
         //Seccion_Parqueo sp = new Seccion_Parqueo();//Eliminar cuando se reciba el objeto Parqueo
         //sp.setSeccion_Id(1);//Eliminar cuando se reciba el objeto Parqueo
+        
+        //EL PROBLEMA ES QUE NO ESTA RECIBIENDO EL VALOR.
+        if(cmbPiso.getSelectedItem().toString() == null) { return; }
+        String x = cmbPiso.getSelectedItem().toString();
+        for (int i=0; i<secParqueos.size(); i++){
+            if(secParqueos.get(i).getDescripcion().equals(x)) {
+                sp = secParqueos.get(i);
+            }
+        }
         List<String> ep = new ArrayList<String>();
-        List<Espacio_Parqueo> l_ep = new ArrayList<Espacio_Parqueo>();
-        l_ep = ep_DAO.usp_selespacio_parqueo(sp);
+        ep1 = new ArrayList<Espacio_Parqueo>();
+        ep1 = ep_DAO.usp_selespacio_parqueo(this.sp);
         cmbEspacio.removeAllItems();
-        for (int i = 0; i < l_ep.size(); i++) {
-            cmbEspacio.addItem("Pos. "+l_ep.get(i).getEspacio_Id());
+        for (int i = 0; i < ep1.size(); i++) {
+            cmbEspacio.addItem("Pos. "+ep1.get(i).getEspacio_Id());
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cmbEspacio;
