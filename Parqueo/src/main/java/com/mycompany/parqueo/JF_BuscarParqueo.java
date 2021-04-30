@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Ale
  */
 public class JF_BuscarParqueo extends javax.swing.JFrame {
-
+    Vehiculo v;
     /**
      * Creates new form JF_BuscarParqueo
      */
@@ -120,7 +120,7 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
         String placaIngresada = txtPlaca.getText();
         String placaBD = "";
 
-        Vehiculo v = new Vehiculo();
+        v = new Vehiculo();
         VehiculoDAO vd = new VehiculoDAO();
 
         try {
@@ -225,4 +225,9 @@ public class JF_BuscarParqueo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
+
+    void setVehiculo(Vehiculo vehiculo) {
+        this.v = vehiculo;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

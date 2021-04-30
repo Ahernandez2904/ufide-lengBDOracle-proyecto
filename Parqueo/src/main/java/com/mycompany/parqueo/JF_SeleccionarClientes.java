@@ -17,6 +17,7 @@ import java.util.List;
 public class JF_SeleccionarClientes extends javax.swing.JFrame {
 
     List<Cliente> c_list;
+
     /**
      * Creates new form JF_SeleccionarClientes
      */
@@ -115,7 +116,7 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-       new JF_IngresarCliente().setVisible(true);
+        new JF_IngresarCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -125,6 +126,10 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         JF_BuscarParqueo jf_bp = new JF_BuscarParqueo();
+        jf_bp.setVisible(true);
+        jf_bp.setParqueo(parqueo);
+        jf_bp.setEspacio_Parqueo(espacio_Parqueo);
+        jf_bp.setSeccion_Parqueo(seccion_Parqueo);
         jf_bp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -167,41 +172,45 @@ public class JF_SeleccionarClientes extends javax.swing.JFrame {
             }
         });
     }
-    
+
     Parqueo parqueo = new Parqueo();
+
     public void setParqueo(Parqueo p) {
         parqueo = p;
     }
-    
+
     Espacio_Parqueo espacio_Parqueo = new Espacio_Parqueo();
+
     public void setEspacio_Parqueo(Espacio_Parqueo ep) {
         espacio_Parqueo = ep;
     }
-    
+
     Seccion_Parqueo seccion_Parqueo = new Seccion_Parqueo();
+
     public void setSeccion_Parqueo(Seccion_Parqueo sp) {
         seccion_Parqueo = sp;
     }
-    
+
     Vehiculo vehiculo = new Vehiculo();
+
     public void setVehiculo(Vehiculo v) {
         vehiculo = v;
     }
-    
+
     public void actualizarCmbCliente(Vehiculo v) throws SQLException {
         //Vehiculo v = new Vehiculo(); //Eliminar cuando se reciba el objeto
         //v.setVehiculo_Id(22); //Eliminar cuando se reciba el objeto
-        
+
         c_list = new ArrayList<Cliente>();
         ClienteDAO c_dao = new ClienteDAO();
         c_list = c_dao.USP_selClienteXVehiculo(v);
         cmbCliente.removeAllItems();
         for (int i = 0; i < c_list.size(); i++) {
-            String nombre = c_list.get(i).getNombre()+" "+c_list.get(i).getPrimer_Apellido()+" "+c_list.get(i).getSegundo_Apellido();
+            String nombre = c_list.get(i).getNombre() + " " + c_list.get(i).getPrimer_Apellido() + " " + c_list.get(i).getSegundo_Apellido();
             cmbCliente.addItem(nombre);
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnCrear;
