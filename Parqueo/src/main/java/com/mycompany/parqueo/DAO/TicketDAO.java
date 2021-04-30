@@ -9,10 +9,12 @@ import com.mycompany.parqueo.Conexion;
 import com.mycompany.parqueo.Ticket;
 import java.sql.CallableStatement;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
@@ -47,6 +49,36 @@ public class TicketDAO extends Conexion {
             conn.getConn().close();
             return ticket;
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            conn.getConn().close();
+            return ticket;
+        }
+    }
+    
+        public Ticket USP_SELTICKET(int id) throws SQLException {
+        String sqlString = "{call USP_SELTICKET (?,?)}";
+        conn = new Conexion();
+    
+        try {
+            conn.openConn();
+            CallableStatement cstm = conn.getConn().prepareCall(sqlString);
+            cstm.setInt(1, id);
+            cstm.registerOutParameter(2, OracleTypes.CURSOR);
+            cstm.executeUpdate();
+            ResultSet rs = (ResultSet) cstm.getObject(2);
+            while (rs.next()) {
+                ticket = new Ticket();
+                ticket.setTicket_Id(rs.getInt("ticket_id"));
+                ticket.setEspacio_Id(rs.getInt("espacio_id"));
+                ticket.setEstado_Id(rs.getInt("estado_id"));
+                ticket.setInventario_Id(rs.getInt("inventario_id"));
+                ticket.setVehiculo_Id(rs.getInt("setVehiculo_Id"));
+                ticket.setFecha_Creacion(rs.getDate("fecha_creaacion"));
+                ticket.setFecha_Entrada(rs.getDate("fecha_entrada"));
+            }
+            conn.getConn().close();
+            return ticket;
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             conn.getConn().close();
             return ticket;

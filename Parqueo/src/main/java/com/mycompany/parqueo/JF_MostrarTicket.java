@@ -5,6 +5,14 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.ParqueoDAO;
+import com.mycompany.parqueo.DAO.TicketDAO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author fabia
@@ -39,8 +47,8 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        areaTicket = new javax.swing.JTextArea();
+        btnContinuar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,9 +90,9 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel9.setText("7--ESTADO");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        areaTicket.setColumns(20);
+        areaTicket.setRows(5);
+        jScrollPane1.setViewportView(areaTicket);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,11 +110,11 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
                 .addGap(0, 22, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("CONTINUAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnContinuar.setText("CONTINUAR");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnContinuarActionPerformed(evt);
             }
         });
 
@@ -130,7 +138,7 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -159,7 +167,7 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addGap(85, 85, 85)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -167,10 +175,10 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     new JF_SeleccionarClientes().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        new JF_Menu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,18 +211,37 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_MostrarTicket().setVisible(true);
+                JF_MostrarTicket jf = new JF_MostrarTicket();
+                jf.setVisible(true);
+                try {
+                    jf.actualizarTicket();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     
+    TicketDAO td = new TicketDAO();
     Ticket ticket = new Ticket();
     public void setTicket(Ticket t) {
         ticket = t;
     }
+    
+    public void actualizarTicket() throws SQLException {
+        ticket = td.USP_SELTICKET(ticket.getTicket_Id());
+        areaTicket.append("Ticket Id: "+ticket.getTicket_Id());
+        areaTicket.append("Espacio Id: "+ticket.getEspacio_Id());
+        areaTicket.append("Estado Id: "+ticket.getEstado_Id());
+        areaTicket.append("Inventario Id: "+ticket.getInventario_Id());
+        areaTicket.append("Vehiculo Id: "+ticket.getVehiculo_Id());
+        areaTicket.append("Fecha de creación: "+ticket.getFecha_Creacion());
+        areaTicket.append("Fecha de entrada: "+ticket.getFecha_Entrada());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea areaTicket;
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -227,6 +254,5 @@ public class JF_MostrarTicket extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
