@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author fabia
  */
 public class JF_Menu extends javax.swing.JFrame {
-        JF_SeleccionarParqueo jsp = new JF_SeleccionarParqueo();
+
     /**
      * Creates new form JF_Menu
      */
@@ -116,13 +116,14 @@ public class JF_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-            try {
-                jsp.actualizarCmbParqueo();
-                jsp.setVisible(true);
-                dispose();
-            } catch (SQLException ex) {
-                Logger.getLogger(JF_Menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        JF_SeleccionarParqueo jsp = new JF_SeleccionarParqueo();
+        try {
+            jsp.actualizarCmbParqueo();
+            jsp.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed

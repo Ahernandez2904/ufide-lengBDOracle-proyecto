@@ -12,7 +12,7 @@ public class Espacio_Parqueo {
     private Espacio_ParqueoDAO ep = new Espacio_ParqueoDAO();
     private int espacio_Id;
     private int categoria_Id;
-    private int estado_Id;
+    private Estado estado;
     private int seccion_Id;
 
     public int getEspacio_Id() {
@@ -31,12 +31,12 @@ public class Espacio_Parqueo {
         this.categoria_Id = categoria_Id;
     }
 
-    public int getEstado_Id() {
-        return estado_Id;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setEstado_Id(int estado_Id) {
-        this.estado_Id = estado_Id;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public int getSeccion_Id() {

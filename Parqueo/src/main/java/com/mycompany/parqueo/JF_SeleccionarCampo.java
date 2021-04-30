@@ -5,6 +5,7 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.Espacio_ParqueoDAO;
 import com.mycompany.parqueo.DAO.Seccion_ParqueoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,9 +18,11 @@ import java.util.logging.Logger;
  * @author Ale
  */
 public class JF_SeleccionarCampo extends javax.swing.JFrame {
-
+    Parqueo p = new Parqueo();
+    Seccion_Parqueo sp = new Seccion_Parqueo();
     Seccion_ParqueoDAO sp_DAO = new Seccion_ParqueoDAO();
-
+    Espacio_ParqueoDAO ep_DAO = new Espacio_ParqueoDAO();
+    List<Seccion_Parqueo> secParqueos;
     /**
      * Creates new form JF_SeleccionarCampo
      */
@@ -152,7 +155,14 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbEspacioActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
+        JF_SeleccionarParqueo jsp = new JF_SeleccionarParqueo();
+        try {
+            jsp.actualizarCmbParqueo();
+            jsp.setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(JF_Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
@@ -162,7 +172,7 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void cmbPisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPisoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cmbPisoActionPerformed
 
     /**
@@ -209,14 +219,28 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
     }
 
     public void actualizarCmbPiso(Parqueo p) throws SQLException {
+        this.p = p;
         //Parqueo p = new Parqueo();//Eliminar cuando se reciba el objeto Parqueo
         //p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto Parqueo
         List<String> sp = new ArrayList<String>();
-        List<Seccion_Parqueo> secParqueos = new ArrayList<Seccion_Parqueo>();
+        secParqueos = new ArrayList<Seccion_Parqueo>();
         secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(p);
         cmbPiso.removeAllItems();
         for (int i = 0; i < secParqueos.size(); i++) {
             cmbPiso.addItem(secParqueos.get(i).getDescripcion());
+        }
+    }
+    
+    public void actualizarCmbEspacio(Seccion_Parqueo sp) throws SQLException {
+        this.sp = sp;
+        //Seccion_Parqueo sp = new Seccion_Parqueo();//Eliminar cuando se reciba el objeto Parqueo
+        //sp.setSeccion_Id(1);//Eliminar cuando se reciba el objeto Parqueo
+        List<String> ep = new ArrayList<String>();
+        List<Espacio_Parqueo> l_ep = new ArrayList<Espacio_Parqueo>();
+        l_ep = ep_DAO.usp_selespacio_parqueo(sp);
+        cmbEspacio.removeAllItems();
+        for (int i = 0; i < l_ep.size(); i++) {
+            cmbEspacio.addItem("Pos. "+l_ep.get(i).getEspacio_Id());
         }
     }
 
