@@ -18,6 +18,7 @@ public class ParqueoDAO extends Conexion {
     public List<Parqueo> usp_sel_totalParqueo() throws SQLException {
         List<Parqueo> parqueos = new ArrayList<Parqueo>();
         String sqlString = "{call usp_sel_totalParqueo ()}";
+        
         try {
             parqueo = new Parqueo();
             conn.openConn();

@@ -5,6 +5,7 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.ParqueoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,14 +136,14 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
             }
         });
     }
-    
+    private ParqueoDAO p2 = new ParqueoDAO();
     public void actualizarCmbParqueo() throws SQLException {
         final List<String> p = new ArrayList<String>();
         List<Parqueo> parqueos = new ArrayList<Parqueo>();
         parqueos = parqueo.seleccionarTodos();
-        /*for (int i=0; i<parqueos.size(); i++){
+        for (int i=0; i<parqueos.size(); i++){
             System.out.println("Element "+i+parqueos.get(i));
-        }*/
+        }
         
     }
 
