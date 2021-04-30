@@ -28,7 +28,8 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }
 
     public Parqueo parqueo;
-    
+    public ParqueoDAO parqueoDAO;
+    public List<Parqueo> parqueos;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +43,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         cmbParqueo = new javax.swing.JComboBox<>();
         btnActualizar = new javax.swing.JButton();
         btnSeleccionar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,22 +73,31 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbParqueo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmbParqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,8 +108,10 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbParqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -118,8 +131,22 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbParqueoActionPerformed
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        // TODO add your handling code here:
+        if(cmbParqueo.getSelectedItem().toString() == null) { return; }
+        String x = cmbParqueo.getSelectedItem().toString();
+        int id = 0;
+        for (int i=0; i<parqueos.size(); i++){
+            if(parqueos.get(i).getDescripcion().equals(x)) {
+                id = parqueos.get(i).getParqueo_Id();
+                    new JF_SeleccionarCampo().setVisible(true);
+                    dispose();
+            }
+        }
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        new JF_Menu().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,15 +180,20 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JF_SeleccionarParqueo jf = new JF_SeleccionarParqueo();
-                jf.setVisible(true);                
+                jf.setVisible(true);
+                try {
+                    jf.actualizarCmbParqueo();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     
     public void actualizarCmbParqueo() throws SQLException {
-        ParqueoDAO parqueoDAO = new ParqueoDAO();
+        parqueoDAO = new ParqueoDAO();
         List<String> p = new ArrayList<String>();
-        List<Parqueo> parqueos = new ArrayList<Parqueo>();
+        parqueos = new ArrayList<Parqueo>();
         parqueos = parqueoDAO.usp_sel_totalParqueo();
         cmbParqueo.removeAllItems();
         for (int i=0; i<parqueos.size(); i++){
@@ -172,6 +204,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnSeleccionar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbParqueo;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
