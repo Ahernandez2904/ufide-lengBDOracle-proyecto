@@ -206,9 +206,9 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarCmbPiso() throws SQLException {
-        Parqueo p = new Parqueo();//Eliminar cuando se reciba el objeto
-        p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto
+    public void actualizarCmbPiso(Parqueo p) throws SQLException {
+        //Parqueo p = new Parqueo();//Eliminar cuando se reciba el objeto Parqueo
+        //p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto Parqueo
         List<String> sp = new ArrayList<String>();
         List<Seccion_Parqueo> secParqueos = new ArrayList<Seccion_Parqueo>();
         secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(p);
