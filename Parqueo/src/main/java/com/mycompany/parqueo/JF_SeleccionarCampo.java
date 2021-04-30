@@ -5,11 +5,20 @@
  */
 package com.mycompany.parqueo;
 
+import com.mycompany.parqueo.DAO.Seccion_ParqueoDAO;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ale
  */
 public class JF_SeleccionarCampo extends javax.swing.JFrame {
+
+    Seccion_ParqueoDAO sp_DAO = new Seccion_ParqueoDAO();
 
     /**
      * Creates new form JF_SeleccionarCampo
@@ -186,9 +195,27 @@ public class JF_SeleccionarCampo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_SeleccionarCampo().setVisible(true);
+                JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
+                jf.setVisible(true);
+                try {
+                    jf.actualizarCmbParqueo();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+    }
+
+    public void actualizarCmbParqueo() throws SQLException {
+        Parqueo p = new Parqueo();//Eliminar cuando se reciba el objeto
+        p.setParqueo_Id(12);//Eliminar cuando se reciba el objeto
+        List<String> sp = new ArrayList<String>();
+        List<Seccion_Parqueo> secParqueos = new ArrayList<Seccion_Parqueo>();
+        secParqueos = sp_DAO.usp_sel_totalSeccionParqueo(p);
+        cmbEspacio.removeAllItems();
+        for (int i = 0; i < secParqueos.size(); i++) {
+            cmbEspacio.addItem(secParqueos.get(i).getDescripcion());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
