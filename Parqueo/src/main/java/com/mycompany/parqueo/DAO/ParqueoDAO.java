@@ -27,7 +27,7 @@ public class ParqueoDAO extends Conexion {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
             //cstm.registerOutParameter(1, OracleTypes.CURSOR);
-            cstm.setNull(1, Types.REF);
+            //cstm.setNull(1, Types.REF);
             //cstm.registerOutParameter(1, Types.REF);
             cstm.registerOutParameter(1, OracleTypes.CURSOR);
             cstm.executeUpdate();
