@@ -42,8 +42,4 @@ public class Parqueo {
     public void setEstado_Id(int estado_Id) {
         this.estado_Id = estado_Id;
     }
-    
-    public List<Parqueo> seleccionarTodos () throws SQLException {
-        return p.usp_sel_totalParqueo();
-    }
 }

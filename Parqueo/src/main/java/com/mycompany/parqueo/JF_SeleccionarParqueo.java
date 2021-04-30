@@ -28,6 +28,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }
 
     public Parqueo parqueo;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,11 +93,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
-        try {
-            actualizarCmbParqueo();
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     private void cmbParqueoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbParqueoActionPerformed
@@ -134,27 +131,27 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JF_SeleccionarParqueo().setVisible(true);
+                JF_SeleccionarParqueo jf = new JF_SeleccionarParqueo();
+                jf.setVisible(true);
+                try {
+                    jf.actualizarCmbParqueo();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JF_SeleccionarParqueo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
     }
-    private ParqueoDAO p2 = new ParqueoDAO();
+    
     public void actualizarCmbParqueo() throws SQLException {
+        ParqueoDAO parqueoDAO = new ParqueoDAO();
         List<String> p = new ArrayList<String>();
         List<Parqueo> parqueos = new ArrayList<Parqueo>();
-        try {
-            //parqueos = parqueo.seleccionarTodos();
-            parqueos = p2.usp_sel_totalParqueo();
-        } catch (Exception e) { System.out.println("A");}
-            Vector model = new Vector();
+        parqueos = parqueoDAO.usp_sel_totalParqueo();
+        cmbParqueo.removeAllItems();
         for (int i=0; i<parqueos.size(); i++){
-            //cmbParqueo.add; //add(parqueos.get(i).getParqueo_Id(),parqueos.get(i).getDescripcion());
-            //System.out.println("Element "+i+parqueos.get(i));
-            model.addElement(new Item());
-            model.setElementAt(parqueos.get(i).getDescripcion(), parqueos.get(i).getParqueo_Id());
+            cmbParqueo.addItem(parqueos.get(i).getDescripcion());
         }
-        cmbParqueo = new JComboBox(model);
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
