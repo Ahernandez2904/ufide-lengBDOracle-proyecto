@@ -257,7 +257,7 @@ public class JF_NuevoVehiculo extends javax.swing.JFrame {
     public void setSeccion_Parqueo(Seccion_Parqueo sp) {
         seccion_Parqueo = sp;
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JLabel jLabel1;

@@ -203,11 +203,6 @@ public class JF_IngresarCliente extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(JF_IngresarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            insertarNuevoTicket();
-        } catch (SQLException ex) {
-            Logger.getLogger(JF_IngresarCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
         JF_MostrarTicket jf = new JF_MostrarTicket();
         jf.setTicket(t);
