@@ -116,7 +116,7 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
             if(parqueos.get(i).getDescripcion().equals(x)) {
                 JF_SeleccionarCampo jf = new JF_SeleccionarCampo();
                 jf.setVisible(true);
-                jf.actuarlizarCmbPiso(parqueos.get(i));
+                jf.actualizarCmbPiso(parqueos.get(i));
                 dispose();
             }
         }
