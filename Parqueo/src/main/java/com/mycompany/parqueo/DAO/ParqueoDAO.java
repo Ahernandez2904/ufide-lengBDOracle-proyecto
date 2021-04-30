@@ -20,14 +20,14 @@ public class ParqueoDAO extends Conexion {
     
     public List<Parqueo> usp_sel_totalParqueo() throws SQLException {
         List<Parqueo> parqueos = new ArrayList<Parqueo>();
-        String sqlString = "{call usp_sel_totalParqueo ()}";
+        String sqlString = "{call usp_sel_totalParqueo (?)}";
         
         try {
             conn.openConn();
             CallableStatement cstm = conn.getConn().prepareCall(sqlString);
             cstm.registerOutParameter(1, OracleTypes.CURSOR);
-            cstm.execute();
-            ResultSet rs = ((OracleCallableStatement)cstm).getCursor(1);
+            cstm.executeQuery();
+            ResultSet rs = cstm.getObject(1, ResultSet.class);
             conn.getConn().commit();
             while (rs.next()) {
                 parqueo = new Parqueo();
@@ -39,7 +39,7 @@ public class ParqueoDAO extends Conexion {
             }
             conn.getConn().close();
             return parqueos;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             conn.getConn().close();
             return parqueos;

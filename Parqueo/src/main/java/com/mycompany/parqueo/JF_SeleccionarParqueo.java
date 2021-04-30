@@ -141,8 +141,8 @@ public class JF_SeleccionarParqueo extends javax.swing.JFrame {
         List<String> p = new ArrayList<String>();
         List<Parqueo> parqueos = new ArrayList<Parqueo>();
         try {
-        //parqueos = parqueo.seleccionarTodos();
-         parqueos = p2.usp_sel_totalParqueo();
+            //parqueos = parqueo.seleccionarTodos();
+            parqueos = p2.usp_sel_totalParqueo();
         } catch (Exception e) { System.out.println("A");}
         for (int i=0; i<parqueos.size(); i++){
             System.out.println("Element "+i+parqueos.get(i));
