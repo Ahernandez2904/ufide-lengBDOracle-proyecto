@@ -44,7 +44,6 @@ public class Parqueo {
     }
     
     public List<Parqueo> seleccionarTodos () throws SQLException {
-        System.out.println("Hola");
         return p.usp_sel_totalParqueo();
     }
 }

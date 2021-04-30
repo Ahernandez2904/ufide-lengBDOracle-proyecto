@@ -2,12 +2,15 @@ package com.mycompany.parqueo.DAO;
 
 import com.mycompany.parqueo.Parqueo;
 import com.mycompany.parqueo.Conexion;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 
 public class ParqueoDAO extends Conexion {
     private Parqueo parqueo;
@@ -20,18 +23,20 @@ public class ParqueoDAO extends Conexion {
         String sqlString = "{call usp_sel_totalParqueo ()}";
         
         try {
-            parqueo = new Parqueo();
             conn.openConn();
-            Statement stm = conn.getConn().createStatement();
-            ResultSet rs = stm.executeQuery(sqlString);
+            CallableStatement cstm = conn.getConn().prepareCall(sqlString);
+            cstm.registerOutParameter(1, OracleTypes.CURSOR);
+            cstm.execute();
+            ResultSet rs = ((OracleCallableStatement)cstm).getCursor(1);
+            conn.getConn().commit();
             while (rs.next()) {
+                parqueo = new Parqueo();
                 parqueo.setDescripcion(rs.getString("descripcion"));
                 parqueo.setDetalle_Dir_Id(rs.getInt("detalle_dir_id"));
                 parqueo.setParqueo_Id(rs.getInt("parqueo_id"));
                 parqueo.setEstado_Id(rs.getInt("estado_id"));
                 parqueos.add(parqueo);
             }
-            conn.getConn().commit();
             conn.getConn().close();
             return parqueos;
         } catch (SQLException e) {
